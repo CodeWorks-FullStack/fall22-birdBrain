@@ -10,6 +10,8 @@ class AppState extends EventEmitter {
   /** @type {import('./Models/Value').Value[]} */
   values = []
   socketData = []
+  /** @type {import('./Models/Bird').Bird[]} */
+  birds = []
 }
 
 export const appState = new Proxy(new AppState(), {

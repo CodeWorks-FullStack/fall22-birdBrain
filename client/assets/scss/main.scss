@@ -15,5 +15,11 @@ main {
   flex-grow: 1;
 }
 
+.picture{
+  max-height: 5vh;
+}
 
-
+.bird-img{
+  height: 50vh;
+  object-fit: cover;
+}
