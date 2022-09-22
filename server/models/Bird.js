@@ -6,7 +6,6 @@ export const BirdSchema = new Schema({
   location: {type: String, required: true, default: 'unknown' },
   // ONE TO MANY account -> many birds
   peeperId: { type: Schema.Types.ObjectId, ref: 'Account', required: true }
-
 }, {
   timestamps: true, toJSON: { virtuals: true }
 })

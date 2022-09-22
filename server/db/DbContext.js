@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import { AccountSchema } from '../models/Account';
 import { BirdSchema } from '../models/Bird.js';
+import { CreepSchema } from '../models/Creep.js';
 import { ValueSchema } from '../models/Value';
 
 class DbContext {
@@ -8,6 +9,7 @@ class DbContext {
   Account = mongoose.model('Account', AccountSchema);
 
   Birds = mongoose.model('Bird', BirdSchema)
+  Creepers = mongoose.model('Creep', CreepSchema)
 
 }
 
