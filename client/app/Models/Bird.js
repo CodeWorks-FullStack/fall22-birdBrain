@@ -6,6 +6,7 @@ export class Bird {
     this.peeper = data.peeper
     this.peeperId = data.peeperId
     this.location = data.location || 'The roof'
+    this.watchers = data.watchers
   }
 
   get BirdTemplate() {
@@ -22,7 +23,7 @@ export class Bird {
         <div class="card-footer">
           <div class="d-flex justify-content-between">
             <span></span>
-            <span>100 - 👀</span>
+            <span>${this.watchers} - 👀</span>
             <span>
               <img
                 title="${this.peeper.name}"
