@@ -12,6 +12,8 @@ class AppState extends EventEmitter {
   socketData = []
   /** @type {import('./Models/Bird').Bird[]} */
   birds = []
+  /** @type {import('./Models/Creep').Creep[]} */
+  creepers = []
 }
 
 export const appState = new Proxy(new AppState(), {

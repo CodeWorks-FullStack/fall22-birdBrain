@@ -10,10 +10,17 @@ function _drawBirds() {
   setHTML('birds', template)
 }
 
+function _drawCreeps() {
+  let template = ''
+  appState.creepers.forEach(c => template += c.CreepTemplate)
+  setHTML('creeps', template)
+}
+
 export class BirdsController {
   constructor () {
     this.getBirds()
     appState.on('birds', _drawBirds)
+    appState.on('creepers', _drawCreeps)
   }
 
   async getBirds() {
@@ -37,6 +44,27 @@ export class BirdsController {
       // @ts-ignore
       const modal = bootstrap.Modal.getOrCreateInstance('#exampleModal')
       modal.hide()
+    } catch (error) {
+      console.error(error)
+      Pop.error(error.message)
+    }
+  }
+
+  async peepTheCreeps(birdId) {
+    try {
+      await birdsService.peepTheCreeps(birdId)
+    } catch (error) {
+      console.error(error)
+      Pop.error(error.message)
+    }
+  }
+
+  async becomeCreep(birdId) {
+    try {
+      if (await Pop.confirm("Are you sure you've seen this bird, you creep?")) {
+        await birdsService.becomeCreep(birdId)
+        Pop.success("YOU'RE A CREEP NOW 👺")
+      }
     } catch (error) {
       console.error(error)
       Pop.error(error.message)
