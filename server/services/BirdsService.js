@@ -1,9 +1,12 @@
 import { dbContext } from "../db/DbContext.js"
-import { BadRequest } from "../utils/Errors.js"
+import { BadRequest, Forbidden } from "../utils/Errors.js"
 
 class BirdsService {
-  async removeBird(id) {
+  async removeBird(id, userInfo) {
     const bird = await this.getBirdById(id)
+    if (bird.peeperId != userInfo.id) {
+      throw new Forbidden('Not yo bird')
+    }
     await bird.remove()
     return bird
   }
