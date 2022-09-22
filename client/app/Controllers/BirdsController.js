@@ -2,7 +2,7 @@ import { appState } from "../AppState.js"
 import { birdsService } from "../Services/BirdsService.js"
 import { getFormData } from "../Utils/FormHandler.js"
 import { Pop } from "../Utils/Pop.js"
-import { setHTML } from "../Utils/Writer.js"
+import { setHTML, setText } from "../Utils/Writer.js"
 
 function _drawBirds() {
   let template = ''
@@ -13,11 +13,15 @@ function _drawBirds() {
 function _drawCreeps() {
   let template = ''
   appState.creepers.forEach(c => template += c.CreepTemplate)
+
   setHTML('creeps', template)
+  if (!appState.activeBird) { return }
+  setText('offcanvasExampleLabel', appState.activeBird.name + ' ' + appState.creepers.length)
+
 }
 
 export class BirdsController {
-  constructor () {
+  constructor() {
     this.getBirds()
     appState.on('birds', _drawBirds)
     appState.on('creepers', _drawCreeps)
@@ -36,6 +40,7 @@ export class BirdsController {
     try {
       // @ts-ignore
       window.event.preventDefault()
+      // @ts-ignore
       const form = window.event.target
       const formData = getFormData(form)
       await birdsService.addBird(formData)
@@ -52,6 +57,7 @@ export class BirdsController {
 
   async peepTheCreeps(birdId) {
     try {
+
       await birdsService.peepTheCreeps(birdId)
     } catch (error) {
       console.error(error)

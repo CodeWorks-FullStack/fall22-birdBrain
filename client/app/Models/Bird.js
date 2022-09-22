@@ -6,7 +6,7 @@ export class Bird {
     this.peeper = data.peeper
     this.peeperId = data.peeperId
     this.location = data.location
-    this.watchers = data.watchers
+    this.watchers = data.creeepinCreepers || 0
   }
 
   get BirdTemplate() {
@@ -18,7 +18,7 @@ export class Bird {
         data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
           src="${this.img}"
           alt="${this.name}" class="img-fluid rounded-top bird-img selectable" title="Peep the creeps">
-          
+
         <div class="card-body">
           <h4 class="text-center">${this.name}</h4>
 

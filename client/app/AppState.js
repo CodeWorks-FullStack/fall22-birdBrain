@@ -12,6 +12,8 @@ class AppState extends EventEmitter {
   socketData = []
   /** @type {import('./Models/Bird').Bird[]} */
   birds = []
+  /** @type {import('./Models/Bird').Bird | null} */
+  activeBird = null
   /** @type {import('./Models/Creep').Creep[]} */
   creepers = []
 }

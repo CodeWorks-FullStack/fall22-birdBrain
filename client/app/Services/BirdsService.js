@@ -1,7 +1,7 @@
 import { appState } from '../AppState.js';
 import { Bird } from '../Models/Bird.js';
 import { Creep } from '../Models/Creep.js';
-import { server } from '../Services/AxiosService.js'
+import { server } from '../Services/AxiosService.js';
 
 class BirdsService {
   async becomeCreep(birdId) {
@@ -10,6 +10,8 @@ class BirdsService {
   }
   async peepTheCreeps(birdId) {
     appState.creepers = []
+    appState.activeBird = appState.birds.find(b => b.id == birdId) || null
+
     // This works
     // const res = await server.get(`api/creeps?birdId=${birdId}`)
     const res = await server.get('api/creeps', { params: { birdId: birdId } })
