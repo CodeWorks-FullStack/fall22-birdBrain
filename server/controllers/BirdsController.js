@@ -3,7 +3,7 @@ import { birdsService } from "../services/BirdsService.js";
 import BaseController from "../utils/BaseController.js";
 
 export class BirdsController extends BaseController {
-  constructor() {
+  constructor () {
     super('api/birds')
     this.router
       .get('', this.get)
@@ -34,7 +34,7 @@ export class BirdsController extends BaseController {
 
   async poachedLikeMyEggs(req, res, next) {
     try {
-      const removedBird = await birdsService.removeBird(req.params.id)
+      const removedBird = await birdsService.removeBird(req.params.id, req.userInfo)
       res.send(removedBird)
     } catch (error) {
       next(error)
