@@ -6,6 +6,7 @@ export class Bird {
     this.peeper = data.peeper
     this.peeperId = data.peeperId
     this.location = data.location
+    this.watchers = data.watchers
   }
 
   get BirdTemplate() {
@@ -25,7 +26,7 @@ export class Bird {
         <div class="card-footer">
           <div class="d-flex justify-content-between">
             <span>${this.location == 'unknown' ? '' : this.location}</span>
-            <span>100 - <i onclick="app.birdsController.becomeCreep('${this.id}')" class="selectable" title="Become a creep">👀</i></span>
+            <span>${this.watchers} - <i onclick="app.birdsController.becomeCreep('${this.id}')" class="selectable" title="Become a creep">👀</i></span>
             <span>
               <img
                 title="${this.peeper.name}"
