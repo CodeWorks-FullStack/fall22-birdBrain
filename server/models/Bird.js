@@ -3,6 +3,7 @@ import { Schema } from "mongoose";
 export const BirdSchema = new Schema({
   name: { type: String, default: '', maxLength: 20 },
   img: { type: String, required: true },
+  location: {type: String, required: true },
   // ONE TO MANY account -> many birds
   peeperId: { type: Schema.Types.ObjectId, ref: 'Account', required: true }
 
