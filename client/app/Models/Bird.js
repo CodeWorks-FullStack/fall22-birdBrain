@@ -5,6 +5,7 @@ export class Bird {
     this.id = data.id
     this.peeper = data.peeper
     this.peeperId = data.peeperId
+    this.location = data.location || 'The roof'
   }
 
   get BirdTemplate() {
