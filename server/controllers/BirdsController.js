@@ -9,6 +9,7 @@ export class BirdsController extends BaseController {
       .get('', this.get)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
+      .delete('/:id', this.poachedLikeMyEggs)
   }
 
 
@@ -26,6 +27,15 @@ export class BirdsController extends BaseController {
       req.body.peeperId = req.userInfo.id
       const bird = await birdsService.createBird(req.body)
       res.send(bird)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async poachedLikeMyEggs(req, res, next) {
+    try {
+      const removedBird = await birdsService.removeBird(req.params.id)
+      res.send(removedBird)
     } catch (error) {
       next(error)
     }
