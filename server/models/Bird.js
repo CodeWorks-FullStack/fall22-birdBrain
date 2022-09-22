@@ -17,4 +17,11 @@ BirdSchema.virtual('peeper', {
   ref: 'Account'
 })
 
+BirdSchema.virtual('creeepinCreepers', {
+  localField: '_id',
+  foreignField: 'birdId',
+  count: true,
+  ref: 'Creep'
+})
+
 

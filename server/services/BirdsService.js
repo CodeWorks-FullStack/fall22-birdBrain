@@ -30,7 +30,7 @@ class BirdsService {
   }
 
   async getBirds() {
-    const birds = await dbContext.Birds.find().populate('peeper', 'name picture')
+    const birds = await dbContext.Birds.find().populate('peeper', 'name picture').populate('creeepinCreepers')
     return birds
   }
 
@@ -41,7 +41,7 @@ class BirdsService {
   }
 
   async getBirdById(id) {
-    const bird = await dbContext.Birds.findById(id).populate('peeper', 'name picture')
+    const bird = await dbContext.Birds.findById(id).populate('peeper', 'name picture').populate('creeepinCreepers')
     if (!bird) {
       throw new BadRequest('Bad Bird Id')
     }
