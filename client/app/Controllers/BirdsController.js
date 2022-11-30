@@ -21,7 +21,7 @@ function _drawCreeps() {
 }
 
 export class BirdsController {
-  constructor() {
+  constructor () {
     this.getBirds()
     appState.on('birds', _drawBirds)
     appState.on('creepers', _drawCreeps)
